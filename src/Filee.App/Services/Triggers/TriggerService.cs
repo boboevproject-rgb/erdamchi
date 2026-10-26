@@ -221,7 +221,7 @@ public sealed class TriggerService : IDisposable
                     NotifyStatus();
                 }
             })
-            { IsBackground = true, Name = "Filee global input" };
+            { IsBackground = true, Name = "Erdamchi global input" };
             _hookThread.Start();
         }
         catch (Exception ex)
@@ -270,7 +270,7 @@ public sealed class TriggerService : IDisposable
                 _gnomeInput?.Reset(LastCursor.X, LastCursor.Y);
             GnomeExtensionStatus = status;
             if (status == GnomeBridgeStatus.VersionMismatch)
-                _log.LogWarning("GNOME pointer extension speaks another protocol version than this Filee ({Version}); " +
+                _log.LogWarning("GNOME pointer extension speaks another protocol version than this Erdamchi ({Version}); " +
                     "sign out and in to load the installed extension", GnomePointerState.ProtocolVersion);
             else
                 _log.LogInformation("GNOME pointer extension {State}",
@@ -278,7 +278,7 @@ public sealed class TriggerService : IDisposable
             NotifyStatus();
         }));
         _gnomeBridge = bridge;
-        _log.LogInformation("Waiting for the Filee GNOME pointer extension (no input-device permission required)");
+        _log.LogInformation("Waiting for the Erdamchi GNOME pointer extension (no input-device permission required)");
         NotifyStatus();
     }
 

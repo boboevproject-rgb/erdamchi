@@ -30,7 +30,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: Filee version
+      label: Erdamchi version
       description: Settings → About
       placeholder: "2.1.0"
     validations:
@@ -53,7 +53,7 @@ body:
       label: Log
       description: |
         The last lines of the newest `filee-<date>.log`.
-        Windows: `%APPDATA%\Filee\logs`
-        macOS: `~/Library/Application Support/Filee/logs`
-        Linux: `~/.config/Filee/logs`
+        Windows: `%APPDATA%\Erdamchi\logs`
+        macOS: `~/Library/Application Support/Erdamchi/logs`
+        Linux: `~/.config/Erdamchi/logs`
       render: text

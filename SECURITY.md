@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Only the [latest release](https://github.com/KnifeLemon/Filee/releases/latest) gets security fixes. Filee checks for
+Only the [latest release](https://github.com/boboevproject-rgb/erdamchi/releases/latest) gets security fixes. Filee checks for
 updates, and an installed copy updates in place, so please check that the problem is still there in the latest
 release before you report it.
 
@@ -10,7 +10,7 @@ release before you report it.
 
 Please don't open a public issue for a security problem.
 
-Report it privately with **[Report a vulnerability](https://github.com/KnifeLemon/Filee/security/advisories/new)** on
+Report it privately with **[Report a vulnerability](https://github.com/boboevproject-rgb/erdamchi/security/advisories/new)** on
 the repository's Security tab.
 
 Include the Filee version, your operating system, what an attacker can do and the steps or file that show it. If a

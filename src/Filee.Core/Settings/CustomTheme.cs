@@ -71,7 +71,7 @@ public sealed partial class CustomTheme
         if (theme is null || theme.IsEmpty)
         {
             // Also covers "Dark" or "Light" with a capital: variant names are case-sensitive, colour names are not.
-            log.LogWarning("Custom theme {Path} sets no colours Filee can use (expected \"light\"/\"dark\" objects of #RRGGBB values)", path);
+            log.LogWarning("Custom theme {Path} sets no colours Erdamchi can use (expected \"light\"/\"dark\" objects of #RRGGBB values)", path);
             return null;
         }
         return theme;

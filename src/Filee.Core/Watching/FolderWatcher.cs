@@ -1,5 +1,5 @@
 // Watches one folder (WatchRule) and converts files that arrive in it. Used by the tray app (Settings → Watch folders)
-// and by "filee watch". A file is converted only once it is complete: it must keep the same size and time for
+// and by "erdamchi watch". A file is converted only once it is complete: it must keep the same size and time for
 // SettleTime and open without sharing (on Windows; macOS and Linux don't lock files being written, so there only
 // the longer wait and Finder's copy-in-progress date count), so downloads and copies still in progress are left alone. Temporary files,
 // the output folder and the originals folder are never picked up, so converted files can't loop back in.

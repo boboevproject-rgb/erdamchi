@@ -214,7 +214,7 @@ public sealed class EngineInstaller
                     break;
                 case "nsis":
                     var sevenZip = Archives.SevenZip.Locate()
-                                   ?? throw new InvalidOperationException($"{component.Id} needs Filee's 7-Zip, which is missing.");
+                                   ?? throw new InvalidOperationException($"{component.Id} needs Erdamchi's 7-Zip, which is missing.");
                     Directory.CreateDirectory(staging);
                     await sevenZip.ExtractAsync(file, staging, [], _root, cancellationToken);
                     TrimTesseract(staging);

@@ -35,7 +35,7 @@ if ($IsMacOS) {
     Invoke-Checked 'Extracted app signature' { codesign --verify --deep --strict (Join-Path $package 'Filee.app') }
 }
 $bin = if ($IsMacOS) { Join-Path $package 'Filee.app/Contents/MacOS' } else { $package }
-$cli = Join-Path $bin 'filee-cli'
+$cli = Join-Path $bin 'erdamchi-cli'
 
 Invoke-Checked 'CLI start' { & $cli version }
 Invoke-Checked 'rhwp start' { & (Join-Path $bin 'engines/rhwp/rhwp') --version }

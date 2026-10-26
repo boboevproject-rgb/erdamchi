@@ -44,7 +44,7 @@ public sealed record CommandLine(
     string? UpdatedFrom = null)
 {
     /// <summary>File name prefix of list files written by FileeExplorerMenu.dll (LIST_PREFIX there) into %TEMP%.</summary>
-    public const string ListFilePrefix = "Filee-convert-";
+    public const string ListFilePrefix = "Erdamchi-convert-";
 
     public static CommandLine Parse(IReadOnlyList<string> args)
     {

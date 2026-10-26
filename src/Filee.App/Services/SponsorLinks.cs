@@ -11,11 +11,11 @@ public sealed record SponsorLink(string Id, string Name, string Url, string Icon
 
 public static class SponsorLinks
 {
-    public const string GitHubSponsorsUrl = "https://github.com/sponsors/KnifeLemon";
-    public const string FairyUrl = "https://fairy.hada.io/@filee";
-    public const string PatreonUrl = "https://patreon.com/KnifeLemon";
-    public const string KoFiUrl = "https://ko-fi.com/knifelemon";
-    public const string PayPalUrl = "https://paypal.me/knifelemon";
+    public const string GitHubSponsorsUrl = "https://github.com/boboevproject-rgb";
+    public const string FairyUrl = "https://github.com/boboevproject-rgb";
+    public const string PatreonUrl = "https://github.com/boboevproject-rgb";
+    public const string KoFiUrl = "https://github.com/boboevproject-rgb";
+    public const string PayPalUrl = "https://github.com/boboevproject-rgb";
 
     private static readonly SponsorLink GitHub = new("github", "GitHub Sponsors", GitHubSponsorsUrl, "Brand.GitHubSponsors", "#BF3989");
     private static readonly SponsorLink Fairy = new("fairy", "Fairy", FairyUrl, "Icon.Heart", "#2E9E6B");
@@ -24,7 +24,5 @@ public static class SponsorLinks
     private static readonly SponsorLink PayPal = new("paypal", "PayPal", PayPalUrl, "Brand.PayPal", "#003087");
 
     /// <summary>Every way, the one that suits <paramref name="language"/> first.</summary>
-    public static IReadOnlyList<SponsorLink> For(string language) => language == "ko"
-        ? [Fairy, GitHub, Patreon, KoFi, PayPal]
-        : [GitHub, Patreon, KoFi, PayPal, Fairy];
+    public static IReadOnlyList<SponsorLink> For(string language) => [GitHub];
 }

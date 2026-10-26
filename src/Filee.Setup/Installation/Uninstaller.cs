@@ -1,5 +1,5 @@
 // Removes Filee:
-//  1. "Filee.exe --uninstall-cleanup": Filee quits and removes what it registered for the user (Explorer menu entries,
+//  1. "Erdamchi.exe --uninstall-cleanup": Filee quits and removes what it registered for the user (Explorer menu entries,
 //     the Send To shortcut, the startup entry, the Windows 11 package) and the engines it downloaded;
 //  2. ends what still runs from the install folder, removes the Explorer menu package if it is still there;
 //  3. removes the shortcuts, the PATH entry, the files of uninstall.json, the install folder and the uninstall entry;
@@ -31,13 +31,13 @@ public sealed class Uninstaller(SetupContext context)
         IProgress<SetupProgress>? progress = null, Action? releaseUninstaller = null)
     {
         folder = Path.TrimEndingDirectorySeparator(Path.GetFullPath(folder));
-        Log.Info($"Uninstalling Filee {record.Version} from {folder} ({record.Scope}); delete settings: {deleteSettings}");
+        Log.Info($"Uninstalling Erdamchi {record.Version} from {folder} ({record.Scope}); delete settings: {deleteSettings}");
         var later = new List<string>();
         progress?.Report(new SetupProgress(SetupStep.Closing, 0));
 
         var exe = Path.Combine(folder, SetupNames.AppExe);
         if (File.Exists(exe))
-            Log.Info($"Filee --uninstall-cleanup: exit code {System.RunAndWait(exe, "--uninstall-cleanup", CleanupTimeout)}");
+            Log.Info($"Erdamchi --uninstall-cleanup: exit code {System.RunAndWait(exe, "--uninstall-cleanup", CleanupTimeout)}");
         foreach (var program in System.ProgramsIn(folder).Where(p => p.Id != Environment.ProcessId))
         {
             // Not the uninstaller that started this one: it waits for this one and ends by itself.
@@ -56,7 +56,7 @@ public sealed class Uninstaller(SetupContext context)
         if (PathVariable.Set(Registry, record.Scope, Path.Combine(folder, SetupNames.CliFolder), present: false))
         {
             System.BroadcastEnvironmentChange();
-            Log.Info("Removed the filee command from PATH");
+            Log.Info("Removed the erdamchi command from PATH");
         }
 
         progress?.Report(new SetupProgress(SetupStep.Removing, 0.5));

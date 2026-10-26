@@ -20,7 +20,7 @@ public sealed class WhatsNewService(UserDataStore store, WindowService windows, 
     private IReadOnlyList<SlideDeck>? _decks;
 
     /// <summary>The assembly whose resources hold the decks.</summary>
-    internal const string Assembly = "Filee";
+    internal const string Assembly = "Erdamchi";
 
     /// <summary>Every deck Filee ships, oldest first.</summary>
     public IReadOnlyList<SlideDeck> Decks => _decks ??= SlideDeck.LoadAll(Assembly);

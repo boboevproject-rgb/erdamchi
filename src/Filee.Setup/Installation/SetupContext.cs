@@ -15,7 +15,7 @@ public sealed record SetupContext(ISetupRegistry Registry, ISetupSystem System, 
 /// it too. Otherwise Filee keeps following Windows' language.</param>
 /// <param name="NoIcons">/NOICONS: no Start menu or desktop shortcut.</param>
 /// <param name="Portable">/PORTABLE=1: only the files.</param>
-/// <param name="ForceClose">Programs still running from the install folder after "Filee --quit" are ended.</param>
+/// <param name="ForceClose">Programs still running from the install folder after "Erdamchi --quit" are ended.</param>
 public sealed record InstallChoices(
     string Folder,
     InstallScope Scope,

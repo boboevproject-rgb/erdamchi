@@ -18,18 +18,18 @@ internal static class SoftPalette
     public const double DefaultCornerRadius = 16;
 
     /// <summary>Embedded Noto fonts (see build/fetch-fonts.ps1). Missing files fall back to system fonts.</summary>
-    private const string Latin = "fonts:Filee#Noto Sans";
-    private const string Arabic = "fonts:Filee#Noto Sans Arabic";
-    private const string Devanagari = "fonts:Filee#Noto Sans Devanagari";
-    private const string Thai = "fonts:Filee#Noto Sans Thai";
+    private const string Latin = "fonts:Erdamchi#Noto Sans";
+    private const string Arabic = "fonts:Erdamchi#Noto Sans Arabic";
+    private const string Devanagari = "fonts:Erdamchi#Noto Sans Devanagari";
+    private const string Thai = "fonts:Erdamchi#Noto Sans Thai";
 
     /// <summary>Each CJK region's embedded font and its system fonts (Windows, then macOS).</summary>
     private static readonly (string Embedded, string System) Japanese =
-        ("fonts:Filee#Noto Sans JP", "Yu Gothic UI, Meiryo, Hiragino Sans");
+        ("fonts:Erdamchi#Noto Sans JP", "Yu Gothic UI, Meiryo, Hiragino Sans");
     private static readonly (string Embedded, string System) Korean =
-        ("fonts:Filee#Noto Sans KR", "Malgun Gothic, Apple SD Gothic Neo");
+        ("fonts:Erdamchi#Noto Sans KR", "Malgun Gothic, Apple SD Gothic Neo");
     private static readonly (string Embedded, string System) Chinese =
-        ("fonts:Filee#Noto Sans SC", "Microsoft YaHei, PingFang SC");
+        ("fonts:Erdamchi#Noto Sans SC", "Microsoft YaHei, PingFang SC");
 
     /// <summary>
     /// Traditional Chinese has no embedded font (two more Noto CJK files would add 11 MB): Windows and macOS always carry

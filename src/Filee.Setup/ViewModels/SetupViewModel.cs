@@ -1,5 +1,5 @@
 // One compact card in a few states: Welcome (the logo, one Install button and an Options sheet with the folder, the
-// options, the engines and the language) → Progress (the new version's "What's new" slides while the files go in) → Done ("Launch Filee") or
+// options, the engines and the language) → Progress (the new version's "What's new" slides while the files go in) → Done ("Launch Erdamchi") or
 // Failed ("Copy details"). An update shows only what it may change (desktop icon, PATH); Filee's own settings stay as
 // they are. The uninstaller uses the same card: Uninstall (keep or delete the settings) → Progress → Uninstalled.
 
@@ -199,7 +199,7 @@ public sealed partial class SetupViewModel : ObservableObject
     /// <summary>Exit code for Setup (Inno Setup's: 0 done, 2 cancelled before installing, 4 failed during installing).</summary>
     public int ExitCode { get; private set; } = 2;
 
-    /// <summary>What to start when the window closes ("Launch Filee").</summary>
+    /// <summary>What to start when the window closes ("Launch Erdamchi").</summary>
     public LaunchRequest? Launch { get; private set; }
 
     public InstallResult? Result => _result;
@@ -279,10 +279,10 @@ public sealed partial class SetupViewModel : ObservableObject
             return;
         if (await PickFolder(Folder) is { } picked)
         {
-            // A folder of its own, like Inno Setup: picking "D:\Apps" installs into "D:\Apps\Filee".
-            Folder = Path.GetFileName(Path.TrimEndingDirectorySeparator(picked)).Equals("Filee", StringComparison.OrdinalIgnoreCase)
+            // A folder of its own, like Inno Setup: picking "D:\Apps" installs into "D:\Apps\Erdamchi".
+            Folder = Path.GetFileName(Path.TrimEndingDirectorySeparator(picked)).Equals("Erdamchi", StringComparison.OrdinalIgnoreCase)
                 ? picked
-                : Path.Combine(picked, "Filee");
+                : Path.Combine(picked, "Erdamchi");
         }
     }
 
@@ -314,7 +314,7 @@ public sealed partial class SetupViewModel : ObservableObject
     [RelayCommand]
     private Task Uninstall() => UninstallAsync();
 
-    /// <summary>"Launch Filee" on the Done card: after an update the main window, not the tray, so the slides show over it.</summary>
+    /// <summary>"Launch Erdamchi" on the Done card: after an update the main window, not the tray, so the slides show over it.</summary>
     [RelayCommand]
     private void LaunchAndClose()
     {

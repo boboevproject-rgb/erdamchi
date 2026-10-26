@@ -259,7 +259,7 @@ internal sealed class OcrPdfWriter : IDisposable
 /// </summary>
 internal static class GlyphlessFont
 {
-    public const string Name = "FileeGlyphless";
+    public const string Name = "ErdamchiGlyphless";
 
     public static readonly byte[] Bytes = Build();
 

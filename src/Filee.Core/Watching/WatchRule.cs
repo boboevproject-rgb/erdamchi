@@ -1,5 +1,5 @@
 // A watch folder: files that land in the folder are converted with a preset (Settings → Watch folders, or
-// "filee watch" on the command line).
+// "erdamchi watch" on the command line).
 
 using Filee.Core.Presets;
 

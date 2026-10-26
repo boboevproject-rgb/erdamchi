@@ -91,7 +91,7 @@ public sealed partial class EnginePackageState : ObservableObject
     [NotifyPropertyChangedFor(nameof(StatusText), nameof(CanInstall), nameof(UsesOwnCopy), nameof(CanUseOwnCopy))]
     private bool _fromSystem;
 
-    /// <summary>"Update recommended: 7.1 here, Filee is tested with 9.0" for an older copy, else null.</summary>
+    /// <summary>"Update recommended: 7.1 here, Erdamchi is tested with 9.0" for an older copy, else null.</summary>
     [ObservableProperty]
     private string? _updateNote;
 
@@ -186,7 +186,7 @@ public sealed class EngineDownloadService
         _loc = loc;
         // Redirects are followed by the installer (mirrors may use plain HTTP; files are verified by SHA-256).
         var http = new HttpClient(new SocketsHttpHandler { AllowAutoRedirect = false }) { Timeout = Timeout.InfiniteTimeSpan };
-        http.DefaultRequestHeaders.UserAgent.ParseAdd($"Filee/{typeof(EngineDownloadService).Assembly.GetName().Version}");
+        http.DefaultRequestHeaders.UserAgent.ParseAdd($"Erdamchi/{typeof(EngineDownloadService).Assembly.GetName().Version}");
         _installer = new EngineInstaller(http, logger: logger);
         Packages = EngineDownloads.Packages.Select(p => new EnginePackageState(p, loc)).ToList();
         if (loc is LocalizationService localization)

@@ -63,7 +63,7 @@ public static class OcrLanguages
     public static async Task<string> EnsureAsync(string code, CancellationToken cancellationToken)
     {
         if (!Components.ContainsKey(code))
-            throw new ArgumentException($"Tesseract has no language '{code}' in Filee's list.", nameof(code));
+            throw new ArgumentException($"Tesseract has no language '{code}' in Erdamchi's list.", nameof(code));
         await OneAtATime.WaitAsync(cancellationToken);
         try
         {
@@ -84,7 +84,7 @@ public static class OcrLanguages
     private static readonly Lazy<HttpClient> Http = new(() =>
     {
         var http = new HttpClient(new SocketsHttpHandler { AllowAutoRedirect = false }) { Timeout = TimeSpan.FromMinutes(10) };
-        http.DefaultRequestHeaders.UserAgent.ParseAdd($"Filee/{typeof(OcrLanguages).Assembly.GetName().Version}");
+        http.DefaultRequestHeaders.UserAgent.ParseAdd($"Erdamchi/{typeof(OcrLanguages).Assembly.GetName().Version}");
         return http;
     });
 

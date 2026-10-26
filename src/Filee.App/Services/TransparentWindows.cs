@@ -48,7 +48,7 @@ internal static class TransparentWindows
             return;
         var cleared = WindowBackdrop.ClearForeign(hwnd);
         if (Warned.Add(kind))
-            log.LogWarning("{Window} got a backdrop Filee didn't ask for ({State}), probably from a program that restyles " +
+            log.LogWarning("{Window} got a backdrop Erdamchi didn't ask for ({State}), probably from a program that restyles " +
                            "windows; {Result}", kind, state, cleared ? "set it back to none" : "could not set it back to none");
     }
 }

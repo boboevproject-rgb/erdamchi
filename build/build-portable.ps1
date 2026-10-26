@@ -81,7 +81,7 @@ if ($RhwpOverride) {
 else {
     & (Join-Path $PSScriptRoot 'fetch-portable-engines.ps1') -Runtime $Runtime -Destination $engines
 }
-foreach ($name in @('Filee', 'filee-cli')) {
+foreach ($name in @('Filee', 'erdamchi-cli')) {
     $executable = Join-Path $publish $name
     if (-not (Test-Path -LiteralPath $executable -PathType Leaf)) { throw "Publish did not produce $name" }
     Invoke-Checked 'Executable permissions' { chmod +x $executable }

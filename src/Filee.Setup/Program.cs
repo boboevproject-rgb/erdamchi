@@ -46,7 +46,7 @@ internal static class Program
         var start = SetupStart.Of(exe, options.Uninstall);
         var payload = start.Payload;
         var uninstall = start.Mode == StartMode.Uninstall;
-        var log = new SetupLog(options.LogFile ?? SetupLog.DefaultFile(paths.Temp, uninstall ? "Filee-Uninstall" : "Filee-Setup"));
+        var log = new SetupLog(options.LogFile ?? SetupLog.DefaultFile(paths.Temp, uninstall ? "Erdamchi-Uninstall" : "Erdamchi-Setup"));
         log.Info($"{(uninstall ? "Uninstaller" : "Setup")} {SetupInfo.Version}{(payload is null ? "" : $" with Filee {payload.Manifest.Version}")}: " +
                  $"{exe} {SetupOptions.Join(args)}; administrator: {NativeMethods.IsElevated()}; Windows {Environment.OSVersion.Version} " +
                  $"{RuntimeInformation.OSArchitecture}{(sandbox is null ? "" : $"; sandbox {sandbox}")}");
@@ -106,7 +106,7 @@ internal static class Program
         if (!options.Portable && sandbox is null && scope == InstallScope.Machine && !NativeMethods.IsElevated())
         {
             payload.Dispose();
-            return RunElevated(exe, args, log, launchFile: Path.Combine(Path.GetTempPath(), $"Filee-Setup-{Guid.NewGuid():N}.launch"));
+            return RunElevated(exe, args, log, launchFile: Path.Combine(Path.GetTempPath(), $"Erdamchi-Setup-{Guid.NewGuid():N}.launch"));
         }
 
         var context = CreateContext(sandbox, paths, log);
@@ -115,10 +115,10 @@ internal static class Program
             texts.SetLanguage(recorded);
         var folder = previous?.Folder
                      ?? (options.Directory is { } dir ? Path.GetFullPath(Environment.ExpandEnvironmentVariables(dir)) : null)
-                     ?? (options.Portable ? Path.Combine(Path.GetDirectoryName(exe)!, "Filee") : paths.DefaultInstallFolder(scope));
+                     ?? (options.Portable ? Path.Combine(Path.GetDirectoryName(exe)!, "Erdamchi") : paths.DefaultInstallFolder(scope));
         if (previous is not null && options.Directory is { } asked
             && !Path.GetFullPath(Environment.ExpandEnvironmentVariables(asked)).TrimEnd('\\').Equals(previous.Folder, StringComparison.OrdinalIgnoreCase))
-            log.Warn($"/DIR={asked} ignored: Filee is installed in {previous.Folder}, which an update keeps");
+            log.Warn($"/DIR={asked} ignored: Erdamchi is installed in {previous.Folder}, which an update keeps");
 
         var modernMenu = context.System.ExplorerMenuSupported && scope == InstallScope.Machine && !options.Portable;
         var tasks = previous is null
@@ -171,7 +171,7 @@ internal static class Program
         if (result is { Succeeded: true } && launch is not null)
         {
             if (options.NoLaunch || sandbox is not null)
-                log.Info($"Not starting Filee ({(sandbox is null ? "/NOLAUNCH" : "sandbox")}): {launch.Executable} {launch.Arguments}");
+                log.Info($"Not starting Erdamchi ({(sandbox is null ? "/NOLAUNCH" : "sandbox")}): {launch.Executable} {launch.Arguments}");
             else
                 StartFilee(launch, options.LaunchFile, log);
         }
@@ -214,7 +214,7 @@ internal static class Program
         var exeFolder = Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(exe)!);
         if (exeFolder.Equals(folder, StringComparison.OrdinalIgnoreCase))
         {
-            var temp = Path.Combine(paths.Temp, $"Filee-Uninstall-{Guid.NewGuid():N}");
+            var temp = Path.Combine(paths.Temp, $"Erdamchi-Uninstall-{Guid.NewGuid():N}");
             Directory.CreateDirectory(temp);
             var copy = Path.Combine(temp, SetupNames.UninstallerExe);
             File.Copy(exe, copy);
@@ -232,8 +232,8 @@ internal static class Program
             return RunElevated(exe, args, log, launchFile: null);
 
         // Phase 2: from a copy in %TEMP%.
-        var fromTemp = Path.GetFileName(exeFolder).StartsWith("Filee-Uninstall-", StringComparison.OrdinalIgnoreCase);
-        var trash = fromTemp ? Path.Combine(exeFolder, "trash") : Path.Combine(paths.Temp, $"Filee-Uninstall-{Guid.NewGuid():N}");
+        var fromTemp = Path.GetFileName(exeFolder).StartsWith("Erdamchi-Uninstall-", StringComparison.OrdinalIgnoreCase);
+        var trash = fromTemp ? Path.Combine(exeFolder, "trash") : Path.Combine(paths.Temp, $"Erdamchi-Uninstall-{Guid.NewGuid():N}");
         var runner = new SetupRunner(context, null, null, folder, record, trash)
         {
             ReleaseFirstPhase = options.FirstPhase is { } first && fromTemp ? () => ReleaseFirstPhase(exeFolder, first, log) : null,
@@ -398,7 +398,7 @@ internal static class Program
             try
             {
                 File.WriteAllLines(launchFile, [launch.Executable, launch.Arguments]);
-                log.Info($"Filee starts from the unelevated Setup: {launch.Arguments}");
+                log.Info($"Erdamchi starts from the unelevated Setup: {launch.Arguments}");
                 return;
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
@@ -410,11 +410,11 @@ internal static class Program
         {
             if (NativeMethods.StartAsShellUser(launch.Executable, launch.Arguments, Path.GetDirectoryName(launch.Executable)!, out var error))
             {
-                log.Info($"Started Filee as the signed-in user: {launch.Arguments}");
+                log.Info($"Started Erdamchi as the signed-in user: {launch.Arguments}");
                 return;
             }
             // Filee notices it runs elevated and offers to restart without administrator rights.
-            log.Warn($"Could not start Filee as the signed-in user ({error}); starting it with Setup's rights");
+            log.Warn($"Could not start Erdamchi as the signed-in user ({error}); starting it with Setup's rights");
         }
         Start(launch, log);
     }
@@ -428,11 +428,11 @@ internal static class Program
                 UseShellExecute = false,
                 WorkingDirectory = Path.GetDirectoryName(launch.Executable)!,
             });
-            log.Info($"Started Filee: {launch.Arguments}");
+            log.Info($"Started Erdamchi: {launch.Arguments}");
         }
         catch (Exception ex) when (ex is Win32Exception or InvalidOperationException)
         {
-            log.Warn($"Could not start Filee: {ex.Message}");
+            log.Warn($"Could not start Erdamchi: {ex.Message}");
         }
     }
 
@@ -475,7 +475,7 @@ internal static class Program
     private static void Tell(SetupOptions options, string text, uint icon)
     {
         if (options.CanShowMessages)
-            NativeMethods.MessageBox(0, text, "Filee Setup", NativeMethods.MB_OK | icon | NativeMethods.MB_SETFOREGROUND);
+            NativeMethods.MessageBox(0, text, "Erdamchi Setup", NativeMethods.MB_OK | icon | NativeMethods.MB_SETFOREGROUND);
     }
 }
 

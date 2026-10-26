@@ -45,7 +45,7 @@ internal static class RecycleBin
         }
 
         TrashRefusal? refusal = null;
-        var thread = new Thread(() => refusal = Recycle(full)) { IsBackground = true, Name = "Filee Recycle Bin" };
+        var thread = new Thread(() => refusal = Recycle(full)) { IsBackground = true, Name = "Erdamchi Recycle Bin" };
         thread.SetApartmentState(ApartmentState.STA);
         thread.Start();
         thread.Join();

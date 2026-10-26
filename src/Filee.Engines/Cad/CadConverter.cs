@@ -77,7 +77,7 @@ public sealed class CadConverter(ILogger? logger = null) : IConverter, IImageTra
                 _logger.LogInformation("{File}: {Count} layout(s), one PDF page each", step.InputPath, sheets.Count);
             if (scene.Items.Count == 0 && sheets.Count == 0)
                 throw new InvalidDataException(scene.Skipped.Count > 0
-                    ? $"The drawing only contains objects Filee cannot draw ({string.Join(", ", scene.Skipped.Keys)})."
+                    ? $"The drawing only contains objects Erdamchi cannot draw ({string.Join(", ", scene.Skipped.Keys)})."
                     : "The drawing has nothing visible to draw: model space and the layout are empty, or every entity is on a layer that is off, frozen or not plotted.");
             cancellationToken.ThrowIfCancellationRequested();
             progress?.Report(0.7);

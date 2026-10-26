@@ -1,4 +1,4 @@
-// The sparse ("packaged with external location") MSIX that puts "Convert with Filee" into the top-level Windows 11
+// The sparse ("packaged with external location") MSIX that puts "Convert with Erdamchi" into the top-level Windows 11
 // File Explorer context menu. The package holds only AppxManifest.xml and a logo; the COM server it declares is the
 // native FileeExplorerMenu.dll in the Filee install folder (src/Filee.ExplorerMenu).
 
@@ -90,8 +90,8 @@ public static class ExplorerMenuPackage
                 new XAttribute("Version", ManifestVersion.ToString(4)),
                 new XAttribute("ProcessorArchitecture", Architecture)),
             new XElement(Foundation + "Properties",
-                new XElement(Foundation + "DisplayName", "Filee"),
-                new XElement(Foundation + "PublisherDisplayName", "Filee contributors"),
+                new XElement(Foundation + "DisplayName", "Erdamchi"),
+                new XElement(Foundation + "PublisherDisplayName", "Bilol Bobozoda"),
                 new XElement(Foundation + "Logo", LogoPath),
                 new XElement(Uap10 + "AllowExternalContent", "true")),
             new XElement(Foundation + "Resources",
@@ -106,15 +106,15 @@ public static class ExplorerMenuPackage
                 new XElement(Rescap + "Capability", new XAttribute("Name", "unvirtualizedResources"))),
             new XElement(Foundation + "Applications",
                 new XElement(Foundation + "Application",
-                    new XAttribute("Id", "Filee"),
-                    new XAttribute("Executable", "Filee.exe"),
+                    new XAttribute("Id", "Erdamchi"),
+                    new XAttribute("Executable", "Erdamchi.exe"),
                     new XAttribute(Uap10 + "TrustLevel", "mediumIL"),
                     new XAttribute(Uap10 + "RuntimeBehavior", "win32App"),
                     // AppListEntry="none": the package only carries the shell extension, it adds no Start menu entry.
                     new XElement(Uap + "VisualElements",
                         new XAttribute("AppListEntry", "none"),
-                        new XAttribute("DisplayName", "Filee"),
-                        new XAttribute("Description", "Filee File Explorer integration"),
+                        new XAttribute("DisplayName", "Erdamchi"),
+                        new XAttribute("Description", "Erdamchi File Explorer integration"),
                         new XAttribute("BackgroundColor", "transparent"),
                         new XAttribute("Square150x150Logo", LogoPath),
                         new XAttribute("Square44x44Logo", LogoPath)),
@@ -127,13 +127,13 @@ public static class ExplorerMenuPackage
                                 new XElement(Desktop5 + "ItemType",
                                     new XAttribute("Type", "*"),
                                     new XElement(Desktop5 + "Verb",
-                                        new XAttribute("Id", "ConvertWithFilee"),
+                                        new XAttribute("Id", "ConvertWithErdamchi"),
                                         new XAttribute("Clsid", clsid))))),
                         new XElement(Com + "Extension",
                             new XAttribute("Category", "windows.comServer"),
                             new XElement(Com + "ComServer",
                                 new XElement(Com + "SurrogateServer",
-                                    new XAttribute("DisplayName", "Filee context menu"),
+                                    new XAttribute("DisplayName", "Erdamchi context menu"),
                                     new XElement(Com + "Class",
                                         new XAttribute("Id", clsid),
                                         new XAttribute("Path", DllFileName),

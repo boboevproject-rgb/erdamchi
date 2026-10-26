@@ -61,7 +61,7 @@ public static class AppHost
             sp.GetRequiredService<IPlatformServices>().MoveToTrash));
 
         // Files dragged from a browser with only an address are downloaded without the browser's cookies.
-        services.AddSingleton(_ => new WebDownloader(userAgent: $"Filee/{typeof(AppHost).Assembly.GetName().Version?.ToString(3)}"));
+        services.AddSingleton(_ => new WebDownloader(userAgent: $"Erdamchi/{typeof(AppHost).Assembly.GetName().Version?.ToString(3)}"));
         services.AddSingleton<EngineDownloadService>();
         services.AddSingleton<PresetAvailability>();
         services.AddSingleton<RadialViewModel>();

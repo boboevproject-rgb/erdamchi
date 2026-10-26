@@ -17,7 +17,7 @@ public sealed class WebDownloader : IDisposable
     private readonly HttpClient _http;
 
     /// <param name="handler">For tests; by default a handler without cookies, credentials or automatic redirects.</param>
-    /// <param name="userAgent">"Filee/1.13.0"; some servers refuse requests without one.</param>
+    /// <param name="userAgent">"Erdamchi/1.13.0"; some servers refuse requests without one.</param>
     public WebDownloader(HttpMessageHandler? handler = null, string? userAgent = null)
     {
         handler ??= new SocketsHttpHandler

@@ -229,7 +229,7 @@ public static class ExplorerMenuRegistration
 
     private static async Task<ModernContextMenuResult> RunPowerShellAsync(Func<string, string> buildScript, bool elevated)
     {
-        var errorFile = Path.Combine(Path.GetTempPath(), $"Filee-explorer-menu-{Guid.NewGuid():N}.txt");
+        var errorFile = Path.Combine(Path.GetTempPath(), $"Erdamchi-explorer-menu-{Guid.NewGuid():N}.txt");
         try
         {
             using var process = Process.Start(CreateStartInfo(buildScript(errorFile), elevated));

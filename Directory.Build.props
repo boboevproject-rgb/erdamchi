@@ -15,12 +15,12 @@
     <NoWarn>$(NoWarn);CS1591;CS1573</NoWarn>
 
     <Version>2.1.0</Version>
-    <Product>Filee</Product>
-    <Authors>Filee contributors</Authors>
-    <Copyright>Copyright (c) Filee contributors</Copyright>
+    <Product>Erdamchi</Product>
+    <Authors>Bilol Bobozoda, Filee contributors</Authors>
+    <Copyright>Copyright (c) 2026 Bilol Bobozoda. Based on Filee, Copyright (c) Filee contributors (MIT)</Copyright>
 
     <!-- Single source of truth for the GitHub repository (used by the updater and the About page). -->
-    <FileeRepositoryUrl>https://github.com/KnifeLemon/Filee</FileeRepositoryUrl>
+    <FileeRepositoryUrl>https://github.com/boboevproject-rgb/erdamchi</FileeRepositoryUrl>
     <RepositoryUrl>$(FileeRepositoryUrl)</RepositoryUrl>
   </PropertyGroup>
 

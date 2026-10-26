@@ -11,10 +11,10 @@
   2. checks out the tag in a worktree and runs its build-installer.ps1 with -CertificateThumbprint, which signs the
      unsigned programs and the Setup program, packs Setup.exe, signs it, zips the portable copy and writes the
      SHA-256 sums;
-  3. installs the signed Setup into a sandbox (nothing on the PC is touched) and checks that Filee.exe and
+  3. installs the signed Setup into a sandbox (nothing on the PC is touched) and checks that Erdamchi.exe and
      uninstall.exe come out signed, then uninstalls it;
   4. uploads Filee-<version>-win-Setup.exe, the portable zip and Filee-<version>-SHA256SUMS.txt to the draft;
-  5. copies the same three files to the download mirror, Cloudflare R2 behind https://dl.filee.sh/<version>/, and
+  5. copies the same three files to the download mirror, Cloudflare R2 behind https://dl.github.com/boboevproject-rgb/erdamchi/<version>/, and
      checks that each one is served there as is (no redirect, the same size). The Microsoft Store takes Setup.exe
      from that address, because GitHub's download links redirect;
   6. with -Publish, publishes the release.
@@ -33,7 +33,7 @@ param(
     # Defaults to $env:FILEE_SIGNING_CERT (see sign-windows.ps1).
     [string]$CertificateThumbprint = $env:FILEE_SIGNING_CERT,
     [switch]$Publish,
-    # Skips the copy to the download mirror (dl.filee.sh).
+    # Skips the copy to the download mirror (dl.github.com/boboevproject-rgb/erdamchi).
     [switch]$NoMirror
 )
 
@@ -90,7 +90,7 @@ function Invoke-Setup([string]$exe) {
 Write-Host 'install the signed Setup into a sandbox'
 Invoke-Setup $setup
 $installed = Join-Path $sandbox 'Program Files\Filee'
-foreach ($file in 'Filee.exe', 'filee-cli.exe', 'uninstall.exe', 'engines\rhwp\rhwp.exe') {
+foreach ($file in 'Erdamchi.exe', 'erdamchi-cli.exe', 'uninstall.exe', 'engines\rhwp\rhwp.exe') {
     $signature = Get-AuthenticodeSignature (Join-Path $installed $file)
     if ($signature.Status -ne 'Valid') { throw "$file is not signed after installing ($($signature.Status))." }
 }
@@ -100,10 +100,10 @@ Remove-Item $sandbox -Recurse -Force -ErrorAction SilentlyContinue
 Write-Host "upload to the draft of $tag"
 Invoke-Checked 'gh release upload' { gh release upload $tag @files --clobber }
 
-# The download mirror: R2 bucket filee-downloads, served at dl.filee.sh. Wrangler is pinned like the engines.
+# The download mirror: R2 bucket filee-downloads, served at dl.github.com/boboevproject-rgb/erdamchi. Wrangler is pinned like the engines.
 if (-not $NoMirror) {
     $bucket = 'filee-downloads'
-    $mirror = "https://dl.filee.sh/$Version"
+    $mirror = "https://dl.github.com/boboevproject-rgb/erdamchi/$Version"
     $types = @{ '.exe' = 'application/vnd.microsoft.portable-executable'; '.zip' = 'application/zip'; '.txt' = 'text/plain; charset=utf-8' }
     foreach ($file in $files) {
         $name = Split-Path $file -Leaf

@@ -8,7 +8,7 @@
   on GitHub's windows-latest runner. The unsigned sparse package is packed by build/tools/make-explorer-package.cs
   through the packaging API that ships with Windows.
 
-  Both files belong next to Filee.exe; the release workflow passes the publish folder as -Destination.
+  Both files belong next to Erdamchi.exe; the release workflow passes the publish folder as -Destination.
 
 .EXAMPLE
   pwsh build/build-explorer-menu.ps1

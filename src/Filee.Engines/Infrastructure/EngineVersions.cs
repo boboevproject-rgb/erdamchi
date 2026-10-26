@@ -11,8 +11,8 @@ public static class EngineVersions
     /// <summary>"Markdig 1.4.0": the product name and version of the library that contains <paramref name="type"/>.</summary>
     public static string Library(string name, Type type) => $"{name} {Of(type.Assembly)}";
 
-    /// <summary>"Filee 1.1.0" — for engines written as part of Filee.</summary>
-    public static string BuiltIn { get; } = $"Filee {Of(typeof(EngineVersions).Assembly)}";
+    /// <summary>"Erdamchi 1.1.0" — for engines written as part of Filee.</summary>
+    public static string BuiltIn { get; } = $"Erdamchi {Of(typeof(EngineVersions).Assembly)}";
 
     /// <summary>The version engines.json pins for a bundled or downloaded component ("0.8.6"), or null.</summary>
     public static string? Component(string componentId) =>

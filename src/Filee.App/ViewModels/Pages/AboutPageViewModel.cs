@@ -33,7 +33,7 @@ public sealed partial class AboutPageViewModel : ObservableObject, IDisposable
     public string Version { get; }
     public string RepositoryUrl { get; } = UpdateService.RepositoryUrl;
 
-    /// <summary>"What's new in Filee 2.0": the slides of the newest version up to this one; null when there are none.</summary>
+    /// <summary>"What's new in Erdamchi 2.0": the slides of the newest version up to this one; null when there are none.</summary>
     public string? WhatsNewText { get; }
 
     public bool HasWhatsNew => WhatsNewText is not null;
@@ -85,7 +85,7 @@ public sealed partial class AboutPageViewModel : ObservableObject, IDisposable
 
     private static string ReadNotices()
     {
-        var uri = new Uri("avares://Filee/Assets/THIRD-PARTY-NOTICES.md");
+        var uri = new Uri("avares://Erdamchi/Assets/THIRD-PARTY-NOTICES.md");
         if (!AssetLoader.Exists(uri))
             return "";
         using var reader = new StreamReader(AssetLoader.Open(uri));

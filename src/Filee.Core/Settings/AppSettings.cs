@@ -132,7 +132,7 @@ public sealed class AppSettings
 
     public bool StartWithSystem { get; set; } = true;
 
-    /// <summary>Show the Explorer "Convert with Filee" context menu entry.</summary>
+    /// <summary>Show the Explorer "Convert with Erdamchi" context menu entry.</summary>
     public bool ContextMenuEnabled { get; set; } = true;
 
     public bool CheckForUpdates { get; set; } = true;
@@ -204,7 +204,7 @@ public sealed class AppSettings
     /// <summary>Conversions that succeeded completely, counted until the feedback card has been shown.</summary>
     public int SuccessfulConversions { get; set; }
 
-    /// <summary>Set once the "Is Filee helping you?" card (GitHub star / feedback) has been shown.</summary>
+    /// <summary>Set once the "Is Erdamchi helping you?" card (GitHub star / feedback) has been shown.</summary>
     public bool FeedbackPromptShown { get; set; }
 
     /// <summary>macOS: set once Filee has shown the system's Accessibility alert, which it shows only once (#316).</summary>

@@ -84,7 +84,7 @@ public sealed class WindowService(ILocalizer loc, IServiceProvider services, Mem
             ShowInTaskbar = false,
             WindowDecorations = WindowDecorations.None,
             WindowStartupLocation = WindowStartupLocation.CenterScreen,
-            Title = "Filee",
+            Title = "Erdamchi",
         };
         host.Show();
         try
@@ -490,7 +490,7 @@ public sealed class WindowService(ILocalizer loc, IServiceProvider services, Mem
         notice.Show();
     }
 
-    /// <summary>Shows the one-time "Is Filee helping you?" card in the bottom-right corner.</summary>
+    /// <summary>Shows the one-time "Is Erdamchi helping you?" card in the bottom-right corner.</summary>
     public void ShowFeedbackNotice()
     {
         if (_feedbackNotice is not null)
@@ -501,7 +501,7 @@ public sealed class WindowService(ILocalizer loc, IServiceProvider services, Mem
         _feedbackNotice.Show();
     }
 
-    /// <summary>Shows the "Filee is running as administrator" card in the bottom-right corner (once per run).</summary>
+    /// <summary>Shows the "Erdamchi is running as administrator" card in the bottom-right corner (once per run).</summary>
     public void ShowElevationNotice()
     {
         if (_elevationNoticeShown)
@@ -515,7 +515,7 @@ public sealed class WindowService(ILocalizer loc, IServiceProvider services, Mem
     private bool _elevationNoticeShown;
 
     /// <summary>
-    /// Shows the "Filee can't convert .ncm files yet" card with "Request this format", replacing an earlier one.
+    /// Shows the "Erdamchi can't convert .ncm files yet" card with "Request this format", replacing an earlier one.
     /// </summary>
     public void ShowFormatRequestNotice(IReadOnlyList<string> extensions)
     {

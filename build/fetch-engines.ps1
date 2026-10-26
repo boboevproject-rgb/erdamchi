@@ -4,7 +4,7 @@
   only; the app downloads the large engines on demand, see src/Filee.Engines/Infrastructure/EngineInstaller.cs).
 
 .DESCRIPTION
-  Produces this layout (next to Filee.exe in a published build, or in the repo root for development):
+  Produces this layout (next to Erdamchi.exe in a published build, or in the repo root for development):
 
     engines/
       libreoffice/   LibreOffice (MPL-2.0), extracted from the official MSI via an administrative install
@@ -27,7 +27,7 @@
   The Microsoft C++ runtime (the "vcruntime" component: MSVCP140.dll, VCRUNTIME140.dll, ...) is copied next to the
   programs built with Visual C++ that do not ship it themselves (rhwp.exe, gswin64c.exe; LibreOffice's own copy goes
   into its program folder), so they also run on PCs without the Visual C++ Redistributable. -RuntimeTo copies it into
-  more folders (build-installer.ps1: next to Filee.exe, for unhwp.dll).
+  more folders (build-installer.ps1: next to Erdamchi.exe, for unhwp.dll).
 
 .PARAMETER Destination
   Target "engines" folder. Default: <repo>/engines (picked up automatically by debug builds).

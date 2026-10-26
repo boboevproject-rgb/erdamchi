@@ -102,7 +102,7 @@ public interface IPlatformServices
     /// </summary>
     void SetStartWithSystem(bool enabled, string executablePath);
 
-    /// <summary>Adds or removes the file manager context-menu entry ("Convert with Filee") and Send To shortcut.</summary>
+    /// <summary>Adds or removes the file manager context-menu entry ("Convert with Erdamchi") and Send To shortcut.</summary>
     void SetContextMenu(bool enabled, string executablePath, string label);
 
     /// <summary>State of the Windows 11 top-level File Explorer menu entry for the app at <paramref name="executablePath"/>.</summary>
@@ -145,7 +145,7 @@ public sealed class StartupEntryNotKeptException(string message) : IOException(m
 /// <summary>The window in front: its process name as <see cref="IPlatformServices.ProcessNameAt"/> reports it, and whether it belongs to the file manager or desktop.</summary>
 public sealed record ForegroundWindowInfo(string? ProcessName, bool IsFileManager);
 
-/// <summary>Whether "Convert with Filee" is in the top-level Windows 11 File Explorer menu (not just "Show more options").</summary>
+/// <summary>Whether "Convert with Erdamchi" is in the top-level Windows 11 File Explorer menu (not just "Show more options").</summary>
 public enum ModernContextMenuState
 {
     /// <summary>Not possible here: another OS, Windows 10, ARM64, or a build without the Explorer extension files.</summary>

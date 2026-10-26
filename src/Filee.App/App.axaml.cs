@@ -48,13 +48,13 @@ public partial class App : Application
     private void Start(IClassicDesktopStyleApplicationLifetime desktop)
     {
         var log = AppHost.Get<ILogger<App>>();
-        // macOS: "Convert with Filee" in Finder's right-click menu. Registered first, so a service picked while
+        // macOS: "Convert with Erdamchi" in Finder's right-click menu. Registered first, so a service picked while
         // Filee wasn't running is delivered as soon as it starts. A request without files Filee can find (another
         // file manager put its selection on the pasteboard in a form Filee doesn't read) is logged with what it held.
         if (OperatingSystem.IsMacOS())
             Filee.Platform.MacOS.MacOSServicesProvider.Register(
                 files => Dispatcher.UIThread.Post(() => HandleCommandLine(CommandLine.Parse(["--convert", .. files]))),
-                types => log.LogWarning("Convert with Filee was picked, but the request named no existing file; it held: {Types}",
+                types => log.LogWarning("Convert with Erdamchi was picked, but the request named no existing file; it held: {Types}",
                     types.Count == 0 ? "nothing" : string.Join(", ", types)));
         // Exceptions in UI event handlers end Filee; write them down first (they are not marked handled).
         Dispatcher.UIThread.UnhandledException += (_, e) =>
@@ -105,7 +105,7 @@ public partial class App : Application
                 else if (files.Count == 0 && Throttle.TryEnter("empty-selection", out var held))
                     log.LogInformation("The selection shortcut found no selected files in {Window}{Elevation}{Held}",
                         platform.DescribeForegroundWindow() is { Length: > 0 } window ? window : "the foreground window",
-                        Program.Elevation.ShellCannotReachFilee ? " (Filee runs as administrator and can't read Explorer)" : "",
+                        Program.Elevation.ShellCannotReachFilee ? " (Erdamchi runs as administrator and can't read Explorer)" : "",
                         LogThrottle.HeldText(held));
             }
             catch (Exception ex) when (ex is not OutOfMemoryException)
@@ -121,7 +121,7 @@ public partial class App : Application
             }
         };
         triggers.Start();
-        log.LogInformation("Filee {Version} started", UpdateService.CurrentVersion);
+        log.LogInformation("Erdamchi {Version} started", UpdateService.CurrentVersion);
         // Which way the transparent windows (donut, toast) are drawn, for reports of one that isn't see-through (#269).
         if (OperatingSystem.IsWindows())
         {
@@ -192,7 +192,7 @@ public partial class App : Application
                         // (#232), also while it only runs in the background.
                         AppHost.Get<WindowService>().ShowMain(store.Settings.FirstRunCompleted ? null : "home");
                         if (!store.Settings.ShowInDock && !platform.TrySetShowInDock(false))
-                            log.LogWarning("Could not restore the macOS Dock visibility policy after reopening Filee");
+                            log.LogWarning("Could not restore the macOS Dock visibility policy after reopening Erdamchi");
                     });
             };
         WatchForUpdates(store);
@@ -296,7 +296,7 @@ public partial class App : Application
         // Pairs with "A later launch handed over …": the request reached the UI thread too.
         if (forwarded && Throttle.TryEnter("forwarded-handled", out var held))
             AppHost.Get<ILogger<App>>().LogInformation("Handling a later launch: {Request}{Held}",
-                options.Quit ? "quit" : options.ConvertFiles.Count > 0 ? $"convert {options.ConvertFiles.Count} file(s)" : "show Filee",
+                options.Quit ? "quit" : options.ConvertFiles.Count > 0 ? $"convert {options.ConvertFiles.Count} file(s)" : "show Erdamchi",
                 LogThrottle.HeldText(held));
         if (options.Quit)
         {

@@ -7,7 +7,7 @@
 //   /SUPPRESSMSGBOXES       no message boxes (errors are logged; the default answer is taken)
 //   /NORESTART /SP- /NOCANCEL /RESTARTEXITCODE= /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS (and their /NO… forms)
 //                           accepted; Setup never restarts Windows and always closes a running Filee
-//   /NOCLOSEAPPLICATIONS    don't force-close programs that still run from the install folder after "Filee --quit"
+//   /NOCLOSEAPPLICATIONS    don't force-close programs that still run from the install folder after "Erdamchi --quit"
 //   /DIR="folder"           install folder (environment variables are expanded)
 //   /LANG=ko                language of Setup (and of a newly installed Filee): en, es, ja, ko, zh-CN (Inno: zhcn),
 //                           zh-TW, pl, hi, ru, ar, pt-PT, pt-BR, fr, ne, th, tr, de

@@ -470,7 +470,7 @@ internal static partial class ICalendar
         var output = new StringBuilder();
         Line(output, "BEGIN:VCALENDAR");
         Line(output, "VERSION:2.0");
-        Line(output, "PRODID:-//Filee//Filee//EN");
+        Line(output, "PRODID:-//Erdamchi//Erdamchi//EN");
         var zones = new Dictionary<string, (TimeZoneInfo Zone, DateTimeOffset Instant, bool HasStart)>(StringComparer.OrdinalIgnoreCase);
         foreach (var component in components)
         {
@@ -505,7 +505,7 @@ internal static partial class ICalendar
                 zone = definition.Zone;
             Line(output, "BEGIN:" + component.Type);
             var uid = cells[13].IndexOfAny(['\r', '\n']) >= 0 || cells[13].Length == 0
-                ? Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join('\0', cells))))[..16] + "@filee"
+                ? Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join('\0', cells))))[..16] + "@erdamchi"
                 : cells[13];
             Line(output, "UID:" + uid);
             Line(output, "DTSTAMP:" + DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'", CultureInfo.InvariantCulture));

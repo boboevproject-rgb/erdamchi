@@ -101,7 +101,7 @@ internal sealed partial class OfdReader
         foreach (var page in Children(Child(document, "Pages"), "Page"))
         {
             if (pages.Count == MaxPages)
-                throw new InvalidDataException($"The OFD document has more than {MaxPages:N0} pages; Filee does not read it.");
+                throw new InvalidDataException($"The OFD document has more than {MaxPages:N0} pages; Erdamchi does not read it.");
             var path = PagePath(docDir, Attr(page, "BaseLoc"));
             if (_package.LoadXml(path)?.Root is not { } content)
                 continue;
@@ -143,7 +143,7 @@ internal sealed partial class OfdReader
                                     || n.EndsWith("/Encryptions.xml", StringComparison.OrdinalIgnoreCase))
             || ofd.Descendants().Any(e => e.Name.LocalName is "Encryptions" or "Encryption" or "EncryptInfo"))
         {
-            throw new InvalidDataException("The OFD document is encrypted. Filee does not convert encrypted (DRM-protected) documents.");
+            throw new InvalidDataException("The OFD document is encrypted. Erdamchi does not convert encrypted (DRM-protected) documents.");
         }
     }
 
@@ -321,7 +321,7 @@ internal sealed partial class OfdReader
     private void Count()
     {
         if (++_objects > MaxObjects)
-            throw new InvalidDataException($"The OFD document has more than {MaxObjects:N0} drawing objects; Filee does not read it.");
+            throw new InvalidDataException($"The OFD document has more than {MaxObjects:N0} drawing objects; Erdamchi does not read it.");
     }
 
     // ───────────────────────── Text ─────────────────────────
@@ -359,7 +359,7 @@ internal sealed partial class OfdReader
         {
             var (pageX, pageY) = ctm.Apply(x, y);
             if (page.Fragments.Count == MaxFragmentsPerPage)
-                throw new InvalidDataException($"An OFD page has more than {MaxFragmentsPerPage:N0} pieces of text; Filee does not read it.");
+                throw new InvalidDataException($"An OFD page has more than {MaxFragmentsPerPage:N0} pieces of text; Erdamchi does not read it.");
             page.Fragments.Add(new Fragment(text, format, fontSize, template)
             {
                 X = origin.X + box.X + pageX,

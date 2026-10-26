@@ -97,7 +97,7 @@ public class WindowsSetupSystem(SetupLog log) : ISetupSystem
     /// <summary>Windows PowerShell with Setup's rights (the Appx cmdlets); the error message, or null.</summary>
     private string? RunPowerShell(Func<string, string> buildScript)
     {
-        var errorFile = Path.Combine(Path.GetTempPath(), $"Filee-Setup-powershell-{Guid.NewGuid():N}.txt");
+        var errorFile = Path.Combine(Path.GetTempPath(), $"Erdamchi-Setup-powershell-{Guid.NewGuid():N}.txt");
         try
         {
             using var process = Process.Start(ExplorerMenuRegistration.CreateStartInfo(buildScript(errorFile), elevated: false));

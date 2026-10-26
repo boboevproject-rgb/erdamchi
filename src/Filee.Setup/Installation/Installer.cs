@@ -1,6 +1,6 @@
 // Installs or updates Filee, in this order (installer/Filee.iss did the same in 1.x):
 //  1. checks free space and the payload's checksum: nothing has changed yet;
-//  2. closes a running Filee ("Filee.exe --quit", which saves and exits), then ends what still runs from the folder;
+//  2. closes a running Filee ("Erdamchi.exe --quit", which saves and exits), then ends what still runs from the folder;
 //  3. removes Filee 1.1's per-user Velopack copy (settings and engines stay);
 //  4. unpacks into a work folder inside the install folder, checking every file, with the uninstaller and its list;
 //  5. swaps the files in (FileSwap: replaced and obsolete files go to a backup, Inno Setup's unins000.* too);
@@ -35,7 +35,7 @@ public sealed class Installer(SetupContext context, SetupPayload payload)
     {
         var folder = Path.TrimEndingDirectorySeparator(Path.GetFullPath(choices.Folder));
         var update = previous is not null && string.Equals(previous.Folder, folder, StringComparison.OrdinalIgnoreCase);
-        Log.Info($"{(update ? "Update" : choices.Portable ? "Portable copy" : "Install")} of Filee {payload.Manifest.Version} " +
+        Log.Info($"{(update ? "Update" : choices.Portable ? "Portable copy" : "Install")} of Erdamchi {payload.Manifest.Version} " +
                  $"into {folder} for {(choices.Scope == InstallScope.Machine ? "all users" : "this user")}; " +
                  $"previous: {(previous is null ? "none" : $"{previous.Version} in {previous.Folder}{(previous.ByInno ? " (Inno Setup)" : "")}")}; " +
                  $"options: {choices.Tasks.ToInnoString()}; engines: {string.Join(',', choices.Engines)}; language: {choices.Language}");
@@ -171,7 +171,7 @@ public sealed class Installer(SetupContext context, SetupPayload payload)
     /// <summary>
     /// The arguments Filee starts with: the choices of a fresh install, or after an update the new version's "What's new"
     /// slides, back in the tray (/SILENT, the app's own updater) or over the main window (<paramref name="shown"/>: the
-    /// user clicked "Launch Filee"). <paramref name="updatedFrom"/>, the version updated from, tells Filee what is new.
+    /// user clicked "Launch Erdamchi"). <paramref name="updatedFrom"/>, the version updated from, tells Filee what is new.
     /// </summary>
     public static string LaunchArguments(InstallChoices choices, bool update, bool shown = false, string? updatedFrom = null) => update
         ? (shown ? "" : "--background ") + "--whats-new" + (IsVersion(updatedFrom) ? "=" + updatedFrom : "")
@@ -220,7 +220,7 @@ public sealed class Installer(SetupContext context, SetupPayload payload)
         if (File.Exists(exe))
         {
             var code = System.RunAndWait(exe, "--quit", QuitTimeout);
-            Log.Info($"Filee --quit: exit code {code}");
+            Log.Info($"Erdamchi --quit: exit code {code}");
         }
         var running = System.ProgramsIn(folder).ToList();
         if (velopack)
@@ -265,13 +265,13 @@ public sealed class Installer(SetupContext context, SetupPayload payload)
         {
             if (!File.Exists(startMenu))
                 undo.Push(("Start menu shortcut", () => File.Delete(startMenu)));
-            System.CreateShortcut(startMenu, exe, folder, "Filee");
+            System.CreateShortcut(startMenu, exe, folder, "Erdamchi");
         }
         if (choices.Tasks.DesktopIcon && !choices.NoIcons)
         {
             if (!File.Exists(desktop))
                 undo.Push(("desktop shortcut", () => File.Delete(desktop)));
-            System.CreateShortcut(desktop, exe, folder, "Filee");
+            System.CreateShortcut(desktop, exe, folder, "Erdamchi");
         }
         else if (update && File.Exists(desktop))
         {

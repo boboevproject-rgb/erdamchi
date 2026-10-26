@@ -73,7 +73,7 @@ internal sealed class ArchivePacker(SevenZip? sevenZip)
                     await RunSevenZipAsync(type, await NamedAsAsync(items, workDirectory, cancellationToken), temp, level, workDirectory, progress, 0, cancellationToken);
                     break;
                 default:
-                    throw new NotSupportedException($"Filee cannot write {format} archives.");
+                    throw new NotSupportedException($"Erdamchi cannot write {format} archives.");
             }
             File.Move(temp, outputPath, overwrite: true);
         }

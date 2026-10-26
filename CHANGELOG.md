@@ -1140,7 +1140,7 @@ zh: 更新通知会显示重要程度和更新内容
   `--to <format>` or one of your presets; `filee watch` converts files that land in a folder; `filee formats` and
   `filee presets` list what's available.
 - `--json` prints the result for scripts. Exit codes: 0 all converted, 1 some failed, 2 wrong arguments or a missing
-  file, 3 nothing to convert. Guide: https://filee.sh/cli/
+  file, 3 nothing to convert. Guide: https://github.com/boboevproject-rgb/erdamchi/cli/
 
 ### Watch folders
 

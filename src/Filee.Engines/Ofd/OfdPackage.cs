@@ -61,7 +61,7 @@ internal sealed class OfdPackage : IDisposable
         if (_zip.Entries.Count > MaxEntries)
         {
             _zip.Dispose();
-            throw new InvalidDataException($"The OFD package has more than {MaxEntries:N0} parts; Filee does not read it.");
+            throw new InvalidDataException($"The OFD package has more than {MaxEntries:N0} parts; Erdamchi does not read it.");
         }
         foreach (var entry in _zip.Entries)
         {
@@ -123,7 +123,7 @@ internal sealed class OfdPackage : IDisposable
         if (name is null || !_entries.ContainsKey(name))
             return null;
         var bytes = Read(name, MaxXmlBytes)
-                    ?? throw new InvalidDataException($"The OFD part {name} is larger than {MaxXmlBytes / (1024 * 1024)} MB; Filee does not read it.");
+                    ?? throw new InvalidDataException($"The OFD part {name} is larger than {MaxXmlBytes / (1024 * 1024)} MB; Erdamchi does not read it.");
         try
         {
             using var reader = XmlReader.Create(new MemoryStream(bytes), XmlSettings);
@@ -150,7 +150,7 @@ internal sealed class OfdPackage : IDisposable
                 return null;
             _read += count;
             if (_read > _maxTotal)
-                throw new InvalidDataException($"The OFD package unpacks to more than {_maxTotal / (1024 * 1024)} MB; Filee does not read it.");
+                throw new InvalidDataException($"The OFD package unpacks to more than {_maxTotal / (1024 * 1024)} MB; Erdamchi does not read it.");
             copy.Write(buffer, 0, count);
         }
         return copy.ToArray();

@@ -86,7 +86,7 @@ public sealed record PreviousInstall(
 /// <summary>Filee 1.1 and earlier, installed by Velopack into %LocalAppData%\Filee for one user.</summary>
 public static class VelopackInstall
 {
-    public static string Root(SetupPaths paths) => Path.Combine(paths.LocalAppData, "Filee");
+    public static string Root(SetupPaths paths) => Path.Combine(paths.LocalAppData, "Erdamchi");
 
     public static bool Exists(SetupPaths paths) =>
         File.Exists(Path.Combine(Root(paths), "Update.exe")) && Directory.Exists(Path.Combine(Root(paths), "current"));
@@ -98,7 +98,7 @@ public static class VelopackInstall
     public static void Remove(SetupPaths paths, ISetupRegistry registry, ISetupSystem system, SetupLog log)
     {
         var root = Root(paths);
-        log.Info($"Removing Filee 1.1 (Velopack) from {root}; settings and engines stay");
+        log.Info($"Removing Erdamchi 1.1 (Velopack) from {root}; settings and engines stay");
         // Its Explorer menu entry points into the folder that goes next.
         system.UnregisterExplorerMenu();
         foreach (var file in new[] { "Update.exe", SetupNames.AppExe })

@@ -45,7 +45,7 @@ public sealed record SlideDeck(Version Version, IReadOnlyList<Slide> Slides)
     public string DisplayVersion => Version.Build > 0 ? Version.ToString(3) : Version.ToString(2);
 
     /// <summary>
-    /// Every deck in the resources of <paramref name="assembly"/> ("Filee", "Filee.Setup"), oldest first. A broken
+    /// Every deck in the resources of <paramref name="assembly"/> ("Erdamchi", "Filee.Setup"), oldest first. A broken
     /// manifest is skipped: the slides are a nicety and must never stop Filee from starting.
     /// </summary>
     public static IReadOnlyList<SlideDeck> LoadAll(string assembly)
