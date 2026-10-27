@@ -1,0 +1,19 @@
+color=c=0x0f0e16:s=1080x1350:r=30:d=2.4,format=yuv420p,
+drawtext=fontfile=fonts/segoeuib.ttf:text='Erdamchi':fontsize=172:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2-140:alpha='if(lt(t,0.5),t/0.5,1)',
+drawtext=fontfile=fonts/seguisb.ttf:text='Перетащи. Брось. Готово.':fontsize=58:fontcolor=0xC9C4FF:x=(w-text_w)/2:y=h/2+60:alpha='if(lt(t,0.9),max(0\,(t-0.35)/0.55),1)',
+drawtext=fontfile=fonts/seguisb.ttf:text='конвертер файлов для Windows':fontsize=40:fontcolor=0xA3A1B3:x=(w-text_w)/2:y=h/2+150:alpha='if(lt(t,1.2),max(0\,(t-0.6)/0.6),1)',
+fade=t=in:st=0:d=0.4,fps=30,settb=AVTB[intro];
+[0:v]trim=start=1.6:end=17.6,setpts=PTS-STARTPTS,format=yuv420p,
+drawtext=fontfile=fonts/segoeuib.ttf:text='Erdamchi':fontsize=38:fontcolor=0xC9C4FF:x=w-text_w-40:y=30,
+drawtext=fontfile=fonts/seguisb.ttf:text='Зажми Ctrl и потяни файл':fontsize=46:fontcolor=white:box=1:boxcolor=0x0f0e16@0.8:boxborderw=22:x=(w-text_w)/2:y=1170:enable='between(t,0,2.6)',
+drawtext=fontfile=fonts/seguisb.ttf:text='Меню форматов — прямо под курсором':fontsize=46:fontcolor=white:box=1:boxcolor=0x0f0e16@0.8:boxborderw=22:x=(w-text_w)/2:y=1170:enable='between(t,2.6,7.3)',
+drawtext=fontfile=fonts/seguisb.ttf:text='Переверни колёсиком — инструменты':fontsize=46:fontcolor=white:box=1:boxcolor=0x0f0e16@0.8:boxborderw=22:x=(w-text_w)/2:y=1170:enable='between(t,7.3,11.0)',
+drawtext=fontfile=fonts/seguisb.ttf:text='Брось на формат — готово рядом с оригиналом':fontsize=44:fontcolor=white:box=1:boxcolor=0x0f0e16@0.8:boxborderw=22:x=(w-text_w)/2:y=1170:enable='between(t,11.0,16.1)',fps=30,settb=AVTB[demo];
+color=c=0x0f0e16:s=1080x1350:r=30:d=3.2,format=yuv420p,
+drawtext=fontfile=fonts/segoeuib.ttf:text='Erdamchi':fontsize=140:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2-200,
+drawtext=fontfile=fonts/seguisb.ttf:text='255 форматов · офлайн · бесплатно':fontsize=50:fontcolor=0xC9C4FF:x=(w-text_w)/2:y=h/2-10,
+drawtext=fontfile=fonts/seguisb.ttf:text='open source · MIT · Windows':fontsize=40:fontcolor=0xA3A1B3:x=(w-text_w)/2:y=h/2+70,
+drawtext=fontfile=fonts/seguisb.ttf:text='github.com/boboevproject-rgb/erdamchi':fontsize=42:fontcolor=white:box=1:boxcolor=0x7F77DD@0.9:boxborderw=24:x=(w-text_w)/2:y=h/2+190:alpha='if(lt(t,0.6),t/0.6,1)',
+fade=t=out:st=2.7:d=0.5,fps=30,settb=AVTB[outro];
+[intro][demo]xfade=transition=fade:duration=0.5:offset=1.9[a];
+[a][outro]xfade=transition=fade:duration=0.5:offset=17.4[v]
