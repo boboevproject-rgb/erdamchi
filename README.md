@@ -39,8 +39,16 @@ dotnet publish src\Filee.Cli\Filee.Cli.csproj -c Release -r win-x64 --self-conta
 себя портативным). Большие движки (LibreOffice, FFmpeg, Pandoc и др.) приложение скачивает само по запросу; rhwp и
 7-Zip для установщика кладёт `build\fetch-engines.ps1 -Only rhwp,7zip`.
 
-Полный установщик с пунктом «Convert with Erdamchi» в меню Проводника собирает `build\build-installer.ps1`
-(нужен zig для `FileeExplorerMenu.dll`, см. `build\build-explorer-menu.ps1`).
+Полный установщик `Erdamchi-<версия>-win-Setup.exe` и портативный zip (нужен PowerShell 7, `pwsh`):
+
+```powershell
+.\build\fetch-engines.ps1 -Only rhwp,7zip -Destination publish\win-x64\engines -RuntimeTo publish\win-x64
+pwsh .\build\build-explorer-menu.ps1 -Destination publish\win-x64      # сам скачает zig, соберёт DLL и MSIX меню Проводника
+dotnet publish src\Filee.Setup\Filee.Setup.csproj -c Release -r win-x64 -p:FileeSetupPublish=true -o build\.cache\setup
+pwsh .\build\build-installer.ps1 -PublishDir publish\win-x64 -SetupProgram build\.cache\setup\Filee.Setup.exe -Portable
+```
+
+Результат в `Releases\`. Сборка не подписана: SmartScreen покажет предупреждение, «Подробнее → Выполнить в любом случае».
 
 ## Обновления из оригинала
 

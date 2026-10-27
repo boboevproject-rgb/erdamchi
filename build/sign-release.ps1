@@ -77,8 +77,8 @@ finally {
     git -C $root worktree remove --force $source
 }
 
-$setup = Join-Path $out "Filee-$Version-win-Setup.exe"
-$files = @($setup, (Join-Path $out "Filee-$Version-win-Portable.zip"), (Join-Path $out "Filee-$Version-SHA256SUMS.txt"))
+$setup = Join-Path $out "Erdamchi-$Version-win-Setup.exe"
+$files = @($setup, (Join-Path $out "Erdamchi-$Version-win-Portable.zip"), (Join-Path $out "Erdamchi-$Version-SHA256SUMS.txt"))
 foreach ($file in $files) { if (-not (Test-Path $file)) { throw "$file was not written." } }
 
 # The signed Setup still finds its payload, and what it installs is signed, the uninstaller too.
