@@ -1,0 +1,7 @@
+[0:v]trim=start=2.9:end=17.0,setpts=PTS-STARTPTS,format=yuv420p,
+drawtext=fontfile=fonts/segoeuib.ttf:text='Erdamchi':fontsize=38:fontcolor=0xC9C4FF:x=w-text_w-40:y=30,
+drawtext=fontfile=fonts/seguisb.ttf:text='Зажми Ctrl и потяни файл':fontsize=46:fontcolor=white:box=1:boxcolor=0x0f0e16@0.8:boxborderw=22:x=(w-text_w)/2:y=1170:enable='between(t,0,1.8)',
+drawtext=fontfile=fonts/seguisb.ttf:text='Меню форматов — прямо под курсором':fontsize=46:fontcolor=white:box=1:boxcolor=0x0f0e16@0.8:boxborderw=22:x=(w-text_w)/2:y=1170:enable='between(t,1.8,6.0)',
+drawtext=fontfile=fonts/seguisb.ttf:text='Переверни колёсиком — инструменты':fontsize=46:fontcolor=white:box=1:boxcolor=0x0f0e16@0.8:boxborderw=22:x=(w-text_w)/2:y=1170:enable='between(t,6.0,9.7)',
+drawtext=fontfile=fonts/seguisb.ttf:text='Брось на формат — готово рядом с оригиналом':fontsize=44:fontcolor=white:box=1:boxcolor=0x0f0e16@0.8:boxborderw=22:x=(w-text_w)/2:y=1170:enable='between(t,9.7,14.2)',
+fade=t=in:st=0:d=0.3,fade=t=out:st=13.7:d=0.4,fps=30[v]
